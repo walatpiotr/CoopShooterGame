@@ -12,5 +12,16 @@ public class LiveScript : MonoBehaviour
             Destroy(effect, 1.2f);
             Destroy(gameObject);
         }
+
+        if(collision.gameObject.tag == "enemy")
+        {
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 1.2f);
+            Destroy(gameObject);
+
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
+        }
+
+
     }
 }
