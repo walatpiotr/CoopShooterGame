@@ -38,9 +38,12 @@ public class PlayerMovement : MonoBehaviour
         //Get the Screen position of the mouse
         Vector2 mouseOnScreen = (Vector2)cam.ScreenToViewportPoint(Input.mousePosition);
 
-        Debug.Log(positionOnScreen.ToString("F5") + " + " + mouseOnScreen.ToString("F5"));
+        //Debug.Log(positionOnScreen.ToString("F5") + " + " + mouseOnScreen.ToString("F5"));
         //Get the angle between the points
+        positionOnScreen = new Vector2(positionOnScreen.x * 16, positionOnScreen.y * 9);
+        mouseOnScreen = new Vector2(mouseOnScreen.x * 16, mouseOnScreen.y * 9);
         float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+        Debug.Log(angle);
 
         //Ta Daaa
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle-90f));
