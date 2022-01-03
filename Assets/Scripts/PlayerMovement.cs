@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         positionOnScreen = new Vector2(positionOnScreen.x * 16, positionOnScreen.y * 9);
         mouseOnScreen = new Vector2(mouseOnScreen.x * 16, mouseOnScreen.y * 9);
         float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-        Debug.Log(angle);
+        //Debug.Log(angle);
 
         //Ta Daaa
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle-90f));
