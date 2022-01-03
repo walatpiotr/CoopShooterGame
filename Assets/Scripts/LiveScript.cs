@@ -13,22 +13,13 @@ public class LiveScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(collision.gameObject.tag == "enemy")
+        if(collision.gameObject.tag == "enemy" || collision.gameObject.tag == "obstacle")
         {
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(effect, 1.2f);
             Destroy(gameObject);
 
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage((float)10.0);
-        }
-
-        if(collision.gameObject.tag == "obstacle")
-        {
-            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            Destroy(effect, 1.2f);
-            Destroy(gameObject);
-
-            collision.gameObject.GetComponent<ObjectHealth>().TakeDamage((float)10.0);
+            collision.gameObject.GetComponent<HealthBar>().TakeDamage((float)10.0);
         }
 
 
