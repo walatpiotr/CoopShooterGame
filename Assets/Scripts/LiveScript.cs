@@ -22,6 +22,15 @@ public class LiveScript : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
         }
 
+        if(collision.gameObject.tag == "obstacle")
+        {
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 1.2f);
+            Destroy(gameObject);
+
+            collision.gameObject.GetComponent<ObjectHealth>().TakeDamage(100);
+        }
+
 
     }
 }
