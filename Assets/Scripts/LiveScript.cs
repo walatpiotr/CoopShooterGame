@@ -19,7 +19,7 @@ public class LiveScript : MonoBehaviour
             Destroy(effect, 1.2f);
             Destroy(gameObject);
 
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage((float)10.0);
         }
 
         if(collision.gameObject.tag == "obstacle")
@@ -28,7 +28,7 @@ public class LiveScript : MonoBehaviour
             Destroy(effect, 1.2f);
             Destroy(gameObject);
 
-            collision.gameObject.GetComponent<ObjectHealth>().TakeDamage(100);
+            collision.gameObject.GetComponent<ObjectHealth>().TakeDamage((float)10.0);
         }
 
 

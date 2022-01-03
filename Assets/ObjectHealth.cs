@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObjectHealth : MonoBehaviour
 {
-  public int maxHealth = 200;
-  public int curHealth = 200;
+  public float maxHealth = 200;
+  public float curHealth = 200;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class ObjectHealth : MonoBehaviour
         
     }
 
-    public void TakeDamage(int dmg){
+    public void TakeDamage(float dmg){
         curHealth -= dmg;
         if (curHealth<=0){
             Destroy(this.gameObject);
