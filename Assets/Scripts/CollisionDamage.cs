@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyObstacles : MonoBehaviour
+public class CollisionDamage : MonoBehaviour
 
 {
 private Vector2 blowDirection;
@@ -10,7 +10,7 @@ private Vector2 blowDirection;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "obstacle")
+        if (collision.gameObject.tag == "obstacle" || collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<HealthBar>().TakeDamage((float)1.0);
             Vector2 dir = collision.contacts[0].point - GetComponent<Rigidbody2D>().position;
