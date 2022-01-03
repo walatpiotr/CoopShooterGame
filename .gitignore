@@ -78,3 +78,5 @@ crashlytics-build.properties
 
 *Assembly-CSharp.csproj
 *AgentsSystemsProject.sln
+
+Library/
