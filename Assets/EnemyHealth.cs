@@ -18,7 +18,9 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //fixed health bar
+        this.transform.Find("HealthBar").eulerAngles = new Vector3(0, 0, 0);
+        this.transform.Find("HealthBar").position = new Vector3(this.transform.position.x, this.transform.position.y + (float)0.7, 0);
     }
 
     public void TakeDamage(float dmg){
@@ -29,6 +31,8 @@ public class EnemyHealth : MonoBehaviour
         spriteRenderer=this.transform.Find("HealthBar").GetComponent<SpriteRenderer>();
         spriteRenderer.drawMode = SpriteDrawMode.Tiled;
         spriteRenderer.size = new Vector2((float)curHealth/(float)maxHealth,(float)1);
+
+        
     }
   
 }
