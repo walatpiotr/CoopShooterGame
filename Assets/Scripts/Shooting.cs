@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -9,7 +7,8 @@ public class Shooting : MonoBehaviour
 
     public float bulletForce = 20f;
 
-    // Update is called once per frame
+    public Camera cam;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -21,9 +20,14 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        var tiltAngle = Random.Range(-15f, 15f);
+        
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        bullet.transform.Rotate(0f, 0f, tiltAngle);
+        rb.SetRotation(Quaternion.Euler(0f, 0f, tiltAngle));
+
+        rb.AddForce(rb.transform.up * bulletForce, ForceMode2D.Impulse);
     }
 }
