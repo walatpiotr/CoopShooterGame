@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-     public float accelerationTime = 2f;
+    public float accelerationTime = 2f;
      public float maxSpeed = 5f;
      private Vector2 movement;
      private float timeLeft;
