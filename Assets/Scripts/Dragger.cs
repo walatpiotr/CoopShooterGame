@@ -4,6 +4,7 @@ public class Dragger : MonoBehaviour {
 
     private Vector3 dragOffset;
     private Camera cam;
+    
 
     [SerializeField] private float speed = 5;
 
