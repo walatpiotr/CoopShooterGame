@@ -3,6 +3,7 @@ using UnityEngine;
 public class LiveScript : MonoBehaviour
 {
     public GameObject hitEffect;
+    public float dmg;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,7 +20,7 @@ public class LiveScript : MonoBehaviour
             Destroy(effect, 1.2f);
             Destroy(gameObject);
 
-            collision.gameObject.GetComponent<HealthBar>().TakeDamage((float)10.0);
+            collision.gameObject.GetComponent<HealthBar>().TakeDamage(dmg);
         }
 
 
