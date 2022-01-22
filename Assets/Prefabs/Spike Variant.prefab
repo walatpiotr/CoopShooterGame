@@ -65,11 +65,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1070069384629812925, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
       propertyPath: m_Name
-      value: Spike
+      value: Spike Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1070069385002780040, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f209166e73ea5fe41aff924dce205844, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1070069384629812924, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+    - {fileID: -8618800499876259754, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+    - {fileID: -2938395600127598096, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+--- !u!1 &7962592946904432767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1070069384629812925, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+  m_PrefabInstance: {fileID: 6942710555797126850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &-8356503068058263323
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962592946904432767}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.009379029, y: 0.5819032}
+      - {x: -0.17222577, y: 0.18919685}
+      - {x: -0.2457698, y: 0.034315467}
+      - {x: -0.33483166, y: -0.1566633}
+      - {x: 0.07522154, y: -0.30310988}
+      - {x: 0.41852248, y: 0.016123474}
