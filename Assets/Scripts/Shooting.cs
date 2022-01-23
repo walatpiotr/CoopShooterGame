@@ -15,6 +15,8 @@ public class Shooting : MonoBehaviour
     public float accuracyAngle;
     public float damage;
 
+    public int currentMagazine;
+
     private void Awake()
     {
         Configure("rifle");    
@@ -31,6 +33,11 @@ public class Shooting : MonoBehaviour
         {
             isShooting = false;
         }
+
+        if (currentMagazine == 0)
+        {
+            NeededReload();
+        }
     }
 
     private void FixedUpdate()
@@ -40,8 +47,11 @@ public class Shooting : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0f)
             {
-                Shoot();
-                timer = fireRate;
+                if (currentMagazine > 0)
+                {
+                    Shoot();
+                    timer = fireRate;
+                }
             }
         }
     }
@@ -68,11 +78,25 @@ public class Shooting : MonoBehaviour
                 accuracyAngle = AssaultRifle.accuracyAngle;
                 bulletForce =  AssaultRifle.bulletForce;
                 fireRate = AssaultRifle.fireRate;
+                currentMagazine = magazineSize;
                 magazineSize = AssaultRifle.magazineSize;
                 damage = AssaultRifle.damage;
                 Debug.Log("configured Rifle");
                 break;
             // TODO add new cases
         }
+    }
+
+    private void NeededReload()
+    {
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            Reload();
+        }
+    }
+
+    private void Reload()
+    {
+
     }
 }
