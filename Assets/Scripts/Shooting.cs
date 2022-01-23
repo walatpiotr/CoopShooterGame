@@ -1,5 +1,7 @@
 using UnityEngine;
 using Assets.Classes;
+using System;
+using System.Collections.Generic;
 
 public class Shooting : MonoBehaviour
 {
@@ -16,14 +18,23 @@ public class Shooting : MonoBehaviour
     public float damage;
     public float reloadTime;
 
-    public int currentMagazine;
+    public int currentMagazine = AssaultRifle.magazineSize;
 
     private float reloadTimer = 0f;
     private bool isReloading = false;
     public GameObject reloadIndicator;
 
+    public Dictionary<string, Tuple<int, int>> magazines = new Dictionary<string, Tuple<int, int>>{};
+
+    private string currentWeapon = "rifle";
+
     private void Awake()
     {
+        magazines.Add("rifle", new Tuple<int, int>(AssaultRifle.magazineSize, 2));
+        magazines.Add("machine", new Tuple<int, int>(MachineGun.magazineSize, 3));
+        magazines.Add("revolver", new Tuple<int, int>(Revolver.magazineSize, 2));
+        magazines.Add("sniper", new Tuple<int, int>(SniperRifle.magazineSize, 2));
+
         Configure("rifle");    
     }
 
@@ -60,11 +71,33 @@ public class Shooting : MonoBehaviour
             currentMagazine = magazineSize;
             reloadIndicator.SetActive(false);
             isReloading = false;
+            SetUpMagazineState(currentWeapon);
         }
 
         if (!isReloading)
         {
             CheckGunSwitch();
+        }
+
+        ConsistMagazines();
+    }
+
+    private void ConsistMagazines()
+    {
+        switch (currentWeapon)
+        {
+            case "rifle":
+                magazines["rifle"] = new Tuple<int, int>(currentMagazine, magazines["rifle"].Item2);
+                break;
+            case "machine":
+                magazines["machine"] = new Tuple<int, int>(currentMagazine, magazines["machine"].Item2);
+                break;
+            case "revolver":
+                magazines["revolver"] = new Tuple<int, int>(currentMagazine, magazines["revolver"].Item2);
+                break;
+            case "sniper":
+                magazines["sniper"] = new Tuple<int, int>(currentMagazine, magazines["sniper"].Item2);
+                break;
         }
     }
 
@@ -84,9 +117,65 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    private void SetUpMagazineState(string gun)
+    {
+        switch (gun)
+        {
+            case "rifle":
+                magazines["rifle"] = new Tuple<int, int>(AssaultRifle.magazineSize, magazines["rifle"].Item2 - 1);
+                break;
+            case "machine":
+                magazines["machine"] = new Tuple<int, int>(MachineGun.magazineSize, magazines["machine"].Item2 - 1);
+                break;
+            case "revolver":
+                magazines["revolver"] = new Tuple<int, int>(Revolver.magazineSize, magazines["revolver"].Item2 - 1);
+                break;
+            case "sniper":
+                magazines["sniper"] = new Tuple<int, int>(SniperRifle.magazineSize, magazines["sniper"].Item2 - 1);
+                break;
+        }
+    }
+
+    bool CheckIfHasMagazine(string gun)
+    {
+        switch (gun)
+        {
+            case "rifle":
+                if (magazines["rifle"].Item2 > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            case "machine":
+                if (magazines["machine"].Item2 > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            case "revolver":
+                if (magazines["revolver"].Item2 > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            case "sniper":
+                if (magazines["sniper"].Item2 > 0)
+                {
+                    return true;
+                }
+
+                return false;
+        }
+
+        return false;
+    }
+
     void Shoot()
     {
-        var tiltAngle = Random.Range(-accuracyAngle, accuracyAngle);
+        var tiltAngle = UnityEngine.Random.Range(-accuracyAngle, accuracyAngle);
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<LiveScript>().dmg = damage;
@@ -109,9 +198,10 @@ public class Shooting : MonoBehaviour
                 bulletForce =  AssaultRifle.bulletForce;
                 fireRate = AssaultRifle.fireRate;
                 magazineSize = AssaultRifle.magazineSize;
-                currentMagazine = magazineSize;
+                currentMagazine = magazines["rifle"].Item1;
                 damage = AssaultRifle.damage;
                 reloadTime = AssaultRifle.reloadTime;
+                currentWeapon = "rifle";
                 Debug.Log("configured Rifle");
                 break;
             case "machine":
@@ -119,9 +209,10 @@ public class Shooting : MonoBehaviour
                 bulletForce = MachineGun.bulletForce;
                 fireRate = MachineGun.fireRate;
                 magazineSize = MachineGun.magazineSize;
-                currentMagazine = magazineSize;
+                currentMagazine = magazines["machine"].Item1;
                 damage = MachineGun.damage;
                 reloadTime = MachineGun.reloadTime;
+                currentWeapon = "machine";
                 Debug.Log("configured Machine Gun");
                 break;
             case "revolver":
@@ -129,9 +220,10 @@ public class Shooting : MonoBehaviour
                 bulletForce = Revolver.bulletForce;
                 fireRate = Revolver.fireRate;
                 magazineSize = Revolver.magazineSize;
-                currentMagazine = magazineSize;
+                currentMagazine = magazines["revolver"].Item1;
                 damage = Revolver.damage;
                 reloadTime = Revolver.reloadTime;
+                currentWeapon = "revolver";
                 Debug.Log("configured Revolver");
                 break;
             case "sniper":
@@ -139,9 +231,10 @@ public class Shooting : MonoBehaviour
                 bulletForce = SniperRifle.bulletForce;
                 fireRate = SniperRifle.fireRate;
                 magazineSize = SniperRifle.magazineSize;
-                currentMagazine = magazineSize;
+                currentMagazine = magazines["sniper"].Item1;
                 damage = SniperRifle.damage;
                 reloadTime = SniperRifle.reloadTime;
+                currentWeapon = "sniper";
                 Debug.Log("configured Sniper");
                 break;
         }
@@ -159,8 +252,11 @@ public class Shooting : MonoBehaviour
 
     private void Reload()
     {
-        Debug.Log("reloading!");
-        SetTimer(reloadTime);
+        if (CheckIfHasMagazine(currentWeapon))
+        {
+            Debug.Log("reloading!");
+            SetTimer(reloadTime);
+        }
     }
 
     private void SetTimer(float time)
