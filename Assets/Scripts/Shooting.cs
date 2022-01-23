@@ -7,13 +7,35 @@ public class Shooting : MonoBehaviour
 
     public float bulletForce = 20f;
 
+    private bool isShooting=false;
+
+    private float shootingRate = 0.2f;
+
+    private float timer = 0f;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Shoot();
-            Debug.Log("shoot!");
+            isShooting = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            isShooting = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isShooting)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                Shoot();
+                timer = shootingRate;
+            }
         }
     }
 
