@@ -61,6 +61,11 @@ public class Shooting : MonoBehaviour
             reloadIndicator.SetActive(false);
             isReloading = false;
         }
+
+        if (!isReloading)
+        {
+            CheckGunSwitch();
+        }
     }
 
     private void FixedUpdate()
@@ -109,7 +114,36 @@ public class Shooting : MonoBehaviour
                 reloadTime = AssaultRifle.reloadTime;
                 Debug.Log("configured Rifle");
                 break;
-            // TODO add new cases
+            case "machine":
+                accuracyAngle = MachineGun.accuracyAngle;
+                bulletForce = MachineGun.bulletForce;
+                fireRate = MachineGun.fireRate;
+                magazineSize = MachineGun.magazineSize;
+                currentMagazine = magazineSize;
+                damage = MachineGun.damage;
+                reloadTime = MachineGun.reloadTime;
+                Debug.Log("configured Machine Gun");
+                break;
+            case "revolver":
+                accuracyAngle = Revolver.accuracyAngle;
+                bulletForce = Revolver.bulletForce;
+                fireRate = Revolver.fireRate;
+                magazineSize = Revolver.magazineSize;
+                currentMagazine = magazineSize;
+                damage = Revolver.damage;
+                reloadTime = Revolver.reloadTime;
+                Debug.Log("configured Revolver");
+                break;
+            case "sniper":
+                accuracyAngle = SniperRifle.accuracyAngle;
+                bulletForce = SniperRifle.bulletForce;
+                fireRate = SniperRifle.fireRate;
+                magazineSize = SniperRifle.magazineSize;
+                currentMagazine = magazineSize;
+                damage = SniperRifle.damage;
+                reloadTime = SniperRifle.reloadTime;
+                Debug.Log("configured Sniper");
+                break;
         }
     }
 
@@ -135,6 +169,26 @@ public class Shooting : MonoBehaviour
         {
             isReloading = true;
             reloadTimer = time;
+        }
+    }
+
+    private void CheckGunSwitch()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Configure("rifle");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Configure("machine");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Configure("revolver");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Configure("sniper");
         }
     }
 }
