@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
 
         RotateToMouse();
-        Debug.DrawLine(transform.position, Camera.main.ScreenToViewportPoint(Input.mousePosition));
     }
 
     void RotateToMouse()
