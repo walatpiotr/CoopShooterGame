@@ -40,4 +40,9 @@ public class Pause : MonoBehaviour
         isPaused=false;
         pauseMenu.SetActive(false);
     }
+
+    public void ReturnToMain()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }
