@@ -23,5 +23,6 @@ public class Spawnpoint : MonoBehaviour
     void Spawn()
     {
         var newEnemy = GameObject.Instantiate(enemyPrefab, gameObject.transform.position, gameObject.transform.rotation);
+    
     }
 }
