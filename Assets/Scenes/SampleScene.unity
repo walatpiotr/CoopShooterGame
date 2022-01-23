@@ -978,6 +978,26 @@ Transform:
   m_Father: {fileID: 1885236973}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1124172466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4361372538551990898, guid: bdbcacd77b47e494fa4fa2ed21dd1539, type: 3}
+  m_PrefabInstance: {fileID: 4361372538710501747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1124172475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124172466}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b2edea14f689645ad81885a41cb450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1997733757}
+  grabObstacle: 0
+  obstacleToGrab: {fileID: 0}
 --- !u!1 &1194361757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,22 +1658,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_Size.x
-      value: 1.0000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.y
-      value: 0.65385425
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Offset.x
-      value: 0.00000002063204
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Offset.y
-      value: 0.17307411
-      objectReference: {fileID: 0}
     - target: {fileID: -3953672056128717681, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
       propertyPath: m_Mass
       value: 0.6
