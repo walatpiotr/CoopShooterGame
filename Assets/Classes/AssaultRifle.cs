@@ -7,5 +7,6 @@
         public static int magazineSize = 30;
         public static float accuracyAngle = 3f;
         public static float damage = 30f;
+        public static float reloadTime = 2.5f;
     }
 }

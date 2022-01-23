@@ -14,12 +14,23 @@ public class Shooting : MonoBehaviour
     public int magazineSize;
     public float accuracyAngle;
     public float damage;
+    public float reloadTime;
 
     public int currentMagazine;
+
+    private float reloadTimer = 0f;
+    private bool isReloading = false;
+    public GameObject reloadIndicator;
 
     private void Awake()
     {
         Configure("rifle");    
+    }
+
+    private void Start()
+    {
+        reloadIndicator = GameObject.Find("ReloadInformation");
+        reloadIndicator.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,6 +48,18 @@ public class Shooting : MonoBehaviour
         if (currentMagazine == 0)
         {
             NeededReload();
+        }
+
+        if (isReloading)
+        {
+            reloadTimer -= Time.deltaTime;
+        }
+
+        if (reloadTimer < 0f)
+        {
+            currentMagazine = magazineSize;
+            reloadIndicator.SetActive(false);
+            isReloading = false;
         }
     }
 
@@ -68,6 +91,8 @@ public class Shooting : MonoBehaviour
         rb.SetRotation(Quaternion.Euler(0f, 0f, tiltAngle));
 
         rb.AddForce(rb.transform.up * bulletForce, ForceMode2D.Impulse);
+
+        currentMagazine -= 1;
     }
 
     private void Configure(string gun)
@@ -78,9 +103,10 @@ public class Shooting : MonoBehaviour
                 accuracyAngle = AssaultRifle.accuracyAngle;
                 bulletForce =  AssaultRifle.bulletForce;
                 fireRate = AssaultRifle.fireRate;
-                currentMagazine = magazineSize;
                 magazineSize = AssaultRifle.magazineSize;
+                currentMagazine = magazineSize;
                 damage = AssaultRifle.damage;
+                reloadTime = AssaultRifle.reloadTime;
                 Debug.Log("configured Rifle");
                 break;
             // TODO add new cases
@@ -89,7 +115,9 @@ public class Shooting : MonoBehaviour
 
     private void NeededReload()
     {
-        if (Input.GetKeyUp(KeyCode.R))
+        reloadIndicator.SetActive(true);
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
         }
@@ -97,6 +125,16 @@ public class Shooting : MonoBehaviour
 
     private void Reload()
     {
+        Debug.Log("reloading!");
+        SetTimer(reloadTime);
+    }
 
+    private void SetTimer(float time)
+    {
+        if (!isReloading)
+        {
+            isReloading = true;
+            reloadTimer = time;
+        }
     }
 }
