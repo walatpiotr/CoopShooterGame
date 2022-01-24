@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDamage : MonoBehaviour
+public class CollisionDamage : MonoBehaviour {
 
-{
-private Vector2 blowDirection;
-
+    private Vector2 blowDirection;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -17,5 +15,5 @@ private Vector2 blowDirection;
             blowDirection = -dir.normalized;
             GetComponent<Rigidbody2D>().AddForce(blowDirection * 10000f);
         }
-}
+    }
 }

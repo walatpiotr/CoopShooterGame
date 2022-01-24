@@ -9,6 +9,7 @@ TagManager:
   - obstacle
   - reloadIndicator
   - HealthBox
+  - moveIndicator
   layers:
   - Default
   - TransparentFX

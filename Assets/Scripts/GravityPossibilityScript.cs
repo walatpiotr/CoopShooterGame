@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GravityPossibilityScript : MonoBehaviour
 {
-    public SpriteRenderer grabSprite;
+    public Transform grabSprite;
     
     void Update()
     {
@@ -11,18 +11,19 @@ public class GravityPossibilityScript : MonoBehaviour
 
     private void CheckIfPlayerNearby()
     {
-        var players = GameObject.FindGameObjectsWithTag("Player");
+        var obstacles = GameObject.FindGameObjectsWithTag("obstacle");
 
-        grabSprite.enabled = false;
+        // grabSprite.enabled = false;
 
-        foreach (var player in players)
+        foreach (var obstacle in obstacles)
         {
-            if (Vector2.Distance(player.transform.position, transform.position) < 3f)
+            if (Vector2.Distance(obstacle.transform.position, transform.position) < 3f)
             {
-                if(player.GetComponent<GravityGun>().grabObstacle == false)
+                if(obstacle.GetComponent<GravityGun>().grabObstacle == false)
                 {
-                    grabSprite.enabled = true;
-                    player.GetComponent<GravityGun>().obstacleToGrab = this.gameObject;
+                    grabSprite = obstacle.transform.Find("GravityGunEnablePopUp");
+                    grabSprite.GetComponent<SpriteRenderer>().enabled = true;
+                    transform.GetComponent<GravityGun>().obstacleToGrab = obstacle;
                 }
             }
         }

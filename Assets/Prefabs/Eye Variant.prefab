@@ -63,10 +63,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eye Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1070069384629812925, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 1070069385002780040, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 78004a6b89e125c42b3e6d296ef41193, type: 3}
+    - target: {fileID: 3037769896492723678, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.044
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037769896492723678, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.898
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867077930172703320, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2938395600127598096, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 891e3c95495b26443bcf6ba7b8ae87b6, type: 3}
