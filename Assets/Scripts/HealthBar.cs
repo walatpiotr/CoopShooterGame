@@ -29,6 +29,9 @@ public class HealthBar : MonoBehaviour
         if (curHealth<=0){
             Destroy(this.gameObject);
         }
+        if (curHealth>100){
+            curHealth=100;
+        }
         spriteRenderer=this.transform.Find("HealthBar").GetComponent<SpriteRenderer>();
         spriteRenderer.drawMode = SpriteDrawMode.Tiled;
         spriteRenderer.size = new Vector2(curHealth/maxHealth, 1f);
