@@ -6,11 +6,12 @@ using TMPro;
 
 public class UI : MonoBehaviour
 {
-    public float val;
+    public float health;
+    public float ammo;
     public TMP_Text textbox;
     void Start()
     {
-        val=GameObject.FindWithTag("Player").GetComponent<HealthBar>().curHealth;
+
         textbox = GetComponentInChildren<TMP_Text>();
         
         
@@ -18,7 +19,9 @@ public class UI : MonoBehaviour
 
     void Update()
     {
-        val=GameObject.FindWithTag("Player").GetComponent<HealthBar>().curHealth;
-        textbox.text = "Health: "+val;
+        health=GameObject.FindWithTag("Player").GetComponent<HealthBar>().curHealth;
+        ammo=GameObject.FindWithTag("Player").GetComponent<Shooting>().currentMagazine;
+
+        textbox.text = "Health: "+health+"     Ammo: "+ammo;
     }
 }
