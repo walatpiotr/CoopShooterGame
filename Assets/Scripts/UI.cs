@@ -8,20 +8,24 @@ public class UI : MonoBehaviour
 {
     public float health;
     public float ammo;
+    public float mags;
     public TMP_Text textbox;
+    GameObject player;
     void Start()
     {
 
         textbox = GetComponentInChildren<TMP_Text>();
+        player=GameObject.FindWithTag("Player");
         
         
     }
 
     void Update()
     {
-        health=GameObject.FindWithTag("Player").GetComponent<HealthBar>().curHealth;
-        ammo=GameObject.FindWithTag("Player").GetComponent<Shooting>().currentMagazine;
+        health=player.GetComponent<HealthBar>().curHealth;
+        ammo=player.GetComponent<Shooting>().currentMagazine;
+        mags=player.GetComponent<Shooting>().magazines[player.GetComponent<Shooting>().currentWeapon].Item2;
 
-        textbox.text = "Health: "+health+"     Ammo: "+ammo;
+        textbox.text = "Health:"+health+"  Ammo:"+ammo+"  Magazines:"+mags;
     }
 }
