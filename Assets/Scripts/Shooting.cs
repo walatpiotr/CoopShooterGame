@@ -26,7 +26,7 @@ public class Shooting : MonoBehaviour
 
     public Dictionary<string, Tuple<int, int>> magazines = new Dictionary<string, Tuple<int, int>>{};
 
-    private string currentWeapon = "rifle";
+    public string currentWeapon = "rifle";
 
     private void Awake()
     {

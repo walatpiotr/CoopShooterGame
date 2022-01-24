@@ -39,6 +39,7 @@ public class Pause : MonoBehaviour
     {
         isPaused=false;
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void ReturnToMain()
