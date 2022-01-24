@@ -19,12 +19,9 @@ public class GravityPossibilityScript : MonoBehaviour
         {
             if (Vector2.Distance(obstacle.transform.position, transform.position) < 3f)
             {
-                if(obstacle.GetComponent<GravityGun>().grabObstacle == false)
-                {
-                    grabSprite = obstacle.transform.Find("GravityGunEnablePopUp");
-                    grabSprite.GetComponent<SpriteRenderer>().enabled = true;
-                    transform.GetComponent<GravityGun>().obstacleToGrab = obstacle;
-                }
+                grabSprite = obstacle.transform.Find("GravityGunEnablePopUp");
+                grabSprite.GetComponent<SpriteRenderer>().enabled = true;
+                transform.GetComponent<GravityGun>().obstacleToGrab = obstacle;
             }
         }
     }

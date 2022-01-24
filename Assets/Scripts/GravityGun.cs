@@ -33,7 +33,8 @@ public class GravityGun : MonoBehaviour
     {
         if (grabObstacle)
         {
-            obstacleToGrab.transform.position = Vector3.MoveTowards(obstacleToGrab.transform.position, cam.ScreenToWorldPoint(Input.mousePosition), 5f*Time.deltaTime);
+            // TODO refactor bcz it goes on z axis (?)
+            obstacleToGrab.transform.position = Vector3.MoveTowards(obstacleToGrab.transform.position, cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f)), 0f);
             obstacleToGrab.transform.rotation = transform.rotation;
         }
     }
