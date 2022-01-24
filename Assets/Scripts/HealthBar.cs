@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //fixed health bar
+        // TODO fixe health bar - there is some error thrown here
         healthBar.eulerAngles = new Vector3(0, 0, 0);
         healthBar.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.7f, 0f);
     }

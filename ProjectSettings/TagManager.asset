@@ -10,6 +10,7 @@ TagManager:
   - reloadIndicator
   - HealthBox
   - moveIndicator
+  - finish
   layers:
   - Default
   - TransparentFX
