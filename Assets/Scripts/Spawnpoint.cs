@@ -5,31 +5,24 @@ using UnityEngine;
 public class Spawnpoint : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public float spawnTime = 3.0f;
+    public float spawnTime = 1.5f;
 
     public float distance = 75f;
     public bool playerNearby = false;
     public bool invoking = false;
     public bool playerOutOfRange = true;
 
+    private float invokeTimer;
+
     void Update()
     {
-        CheckDistance();
-    }
-
-    private void FixedUpdate()
-    {
-        if (playerNearby && !invoking)
+        if (invokeTimer >= 0f)
         {
-            InvokeRepeating("Spawn", 0.1f, spawnTime);
-            invoking = true;
-            // playerNearby = false;
+            invokeTimer -= Time.deltaTime;
         }
-        if (!playerNearby && invoking)
+        if (invokeTimer < 0f)
         {
             CancelInvoke("Spawn");
-            invoking = false;
-            // playerNearby = false;
         }
     }
 
@@ -54,5 +47,11 @@ public class Spawnpoint : MonoBehaviour
                 playerNearby = false;
             }
         }
+    }
+
+    public void StartInvokingSpawn(float timer)
+    {
+        invokeTimer = timer;
+        InvokeRepeating("Spawn", 0.01f, spawnTime);
     }
 }

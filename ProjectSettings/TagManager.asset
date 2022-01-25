@@ -11,6 +11,10 @@ TagManager:
   - HealthBox
   - moveIndicator
   - finish
+  - spawnTriggerArea
+  - sword
+  - Undefined
+  - spawnPoint
   layers:
   - Default
   - TransparentFX

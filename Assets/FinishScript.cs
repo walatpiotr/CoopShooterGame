@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishScript : MonoBehaviour
 {
@@ -26,8 +27,8 @@ public class FinishScript : MonoBehaviour
                 Destroy(enemy);
             }
 
+            SceneManager.LoadScene("Start");
             // TODO add finish canvas or something
-
         }               
     }
 }

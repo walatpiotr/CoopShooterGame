@@ -287,4 +287,23 @@ public class Shooting : MonoBehaviour
             Configure("sniper");
         }
     }
+
+    public void AddAmmo(string ammoType, int amount)
+    {
+        switch (ammoType)
+        {
+            case "rifle":
+                magazines["rifle"] = new Tuple<int, int>(magazines["rifle"].Item1, magazines["rifle"].Item2 + 1);
+                break;
+            case "machine":
+                magazines["machine"] = new Tuple<int, int>(magazines["machine"].Item1, magazines["machine"].Item2 + 1);
+                break;
+            case "revolver":
+                magazines["revolver"] = new Tuple<int, int>(magazines["revolver"].Item1, magazines["revolver"].Item2 + 1);
+                break;
+            case "sniper":
+                magazines["sniper"] = new Tuple<int, int>(magazines["sniper"].Item1, magazines["sniper"].Item2 + 1);
+                break;
+        }
+    }
 }
