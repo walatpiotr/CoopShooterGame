@@ -72,6 +72,7 @@ public class Shooting : MonoBehaviour
             reloadIndicator.SetActive(false);
             isReloading = false;
             SetUpMagazineState(currentWeapon);
+            reloadTimer = 0f;
         }
 
         if (!isReloading)
