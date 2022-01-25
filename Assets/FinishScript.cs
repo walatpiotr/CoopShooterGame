@@ -27,7 +27,7 @@ public class FinishScript : MonoBehaviour
                 Destroy(enemy);
             }
 
-            SceneManager.LoadScene("Start");
+            SceneManager.LoadScene("Finish");
             // TODO add finish canvas or something
         }               
     }

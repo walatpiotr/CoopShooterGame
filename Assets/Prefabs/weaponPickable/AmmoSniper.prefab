@@ -61,11 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694798496193622828, guid: 8bb8aadc819958a4786acdc5189cd6b1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.82
+      value: 1.28125
       objectReference: {fileID: 0}
     - target: {fileID: 694798496193622828, guid: 8bb8aadc819958a4786acdc5189cd6b1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 694798496193622829, guid: 8bb8aadc819958a4786acdc5189cd6b1, type: 3}
       propertyPath: m_Sprite
@@ -81,3 +81,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bb8aadc819958a4786acdc5189cd6b1, type: 3}
+--- !u!1 &9143351739897656673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 694798496193622830, guid: 8bb8aadc819958a4786acdc5189cd6b1, type: 3}
+  m_PrefabInstance: {fileID: 8595083037297083983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2423348533244552531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143351739897656673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
