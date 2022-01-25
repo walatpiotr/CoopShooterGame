@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class HealthBar : MonoBehaviour
 {
@@ -28,6 +30,10 @@ public class HealthBar : MonoBehaviour
         curHealth -= dmg;
         if (curHealth<=0){
             Destroy(this.gameObject);
+            if (this.gameObject.tag == "Player"){
+               SceneManager.LoadScene("Dead"); 
+            }
+            
         }
         if (curHealth>100){
             curHealth=100;
