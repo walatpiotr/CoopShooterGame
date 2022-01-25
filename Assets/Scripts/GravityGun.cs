@@ -41,9 +41,8 @@ public class GravityGun : MonoBehaviour
         {
 
             // TODO refactor bcz it goes on z axis (?)
-        Vector2 mousePosition = (Vector2)cam.ScreenToViewportPoint(Input.mousePosition);
-        mousePosition = obstacleToGrab.transform.position + (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f));
-        obstacleToGrab.transform.position = Vector2.MoveTowards(obstacleToGrab.transform.position, mousePosition, 2f * Time.deltaTime);            
+        Vector2 mouseP = obstacleToGrab.transform.position + (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f));
+        obstacleToGrab.transform.position = Vector2.MoveTowards(obstacleToGrab.transform.position, mouseP, 2f * Time.deltaTime);            
         obstacleToGrab.transform.rotation = transform.rotation;
 
         }
