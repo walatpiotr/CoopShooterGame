@@ -35,7 +35,7 @@ public class GravityGun : MonoBehaviour
     {
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         //mousePosition = cam.ViewportToWorldPoint(Input.mousePosition);
-        Debug.Log(transform.position + " + " + mousePosition);
+        //Debug.Log(transform.position + " + " + mousePosition);
 
         if (grabObstacle)
         {

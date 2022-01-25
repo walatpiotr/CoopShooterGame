@@ -1,28 +1,34 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class spawnTrigger : MonoBehaviour
 {
-    public GameObject[] spawnPointsToTrigger;
+    public List<GameObject> spawnPointsToTrigger;
 
     public float timer = 8.0f;
 
     public bool isTriggering = false;
+    public bool exited = false;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {
-        if (collision.gameObject.tag == "Player")
+        spawnPointsToTrigger = new List<GameObject>();
+
+        var spawnPoints = GameObject.FindGameObjectsWithTag("spawnPoint");
+        foreach (var spawn in spawnPoints)
         {
-            isTriggering = true;        
+            if(Vector2.Distance(transform.position, spawn.transform.position) <= 35f)
+            {
+                spawnPointsToTrigger.Add(spawn);
+            }
         }
     }
 
-    private void Update()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isTriggering)
+        if (collision.transform.gameObject.tag == "Player")
         {
-            foreach(var spawn in spawnPointsToTrigger)
+            foreach (var spawn in spawnPointsToTrigger)
             {
                 spawn.GetComponent<Spawnpoint>().StartInvokingSpawn(timer);
             }

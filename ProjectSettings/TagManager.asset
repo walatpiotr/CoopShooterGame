@@ -13,6 +13,8 @@ TagManager:
   - finish
   - spawnTriggerArea
   - sword
+  - Undefined
+  - spawnPoint
   layers:
   - Default
   - TransparentFX

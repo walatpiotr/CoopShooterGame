@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8043412132364528185}
   m_Layer: 0
   m_Name: Spawnpoint
-  m_TagString: Untagged
+  m_TagString: spawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,3 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5660739329777386198, guid: ddcf77400608a77429faf1da0585e353, type: 3}
   spawnTime: 5
+  distance: 75
+  playerNearby: 0
+  invoking: 0
+  playerOutOfRange: 1
